@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+main{
+    display: flex;
+    width: 1440px;
+    min-height: 100vh;
+    align-items: center;
+    padding-left: 120px;
+    padding-right: 120px;
+    background-color: #fff;
+}
+
+.left_side {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.left_side h1 {
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 4rem;
+    color: #262626;
+}
+.left_side p {
+    margin-top: 12px;
+    color: #818181;
+    font-size: 1rem;
+}
+
+
+.right_side{
+    width: 50%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.sign_in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: auto;
+    background-color: #262626;
+    border-radius: 2vw;
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+}
+.sign_in h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #fff;
+}
+.blocks {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.blocks form {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    margin: 6vh 6vh 2vh 6vh;
+}
+.blocks label {
+    margin-top: 2vh;
+    font-weight: 400;
+    color: #c8c8c8;
+}
+.blocks input {
+    margin-top: .5rem;
+    width: 28vw;
+}
+.blocks input[placeholder="Enter your name"] {
+    color: rgb(202, 206, 210);
+}
+.blocks input[placeholder="Password"] {
+    color: rgb(202, 206, 210);
+}
+.blocks input[type="text"] {
+    padding: 10px;
+    border: 2px solid #e8e8e8;
+    border-radius: 1rem;
+    font-size: 16px;
+    transition: 0.3s; 
+}
+.blocks input[type="text"]:focus {
+    border-color: #8d8d8d;
+    outline: none;
+    box-shadow: 0 0 5px rgba(141, 141, 141, 0.5);
+}
+.blocks p {
+    width: 28vw;
+    height: auto;
+    color: #8d8d8d;
+    font-weight: 200;
+    font-size: .8rem;
+    background-color: #ffffff;
+    color: #262626;
+    border: none;
+    border-radius: 21px;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 28vw;
+}
+button:hover {
+    color: #fff;
+    background-color: #268fac;
+}
