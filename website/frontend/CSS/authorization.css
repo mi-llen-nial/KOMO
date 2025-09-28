@@ -14,10 +14,10 @@ main{
     gap: 6vw;
     padding-left: 120px;
     padding-right: 120px;
-    background-color: #F8F9FD;
-    background-image: url(./images/image_1487283582.jpg);
+    background-color: #fff;
+    /* background-image: url(./images/image_1487283582.jpg);
     background-size: 17vw;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
 }
 
 .left_side {
