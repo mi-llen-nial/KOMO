@@ -82,10 +82,13 @@ main{
     margin-top: .5rem;
     width: 28vw;
 }
-.blocks input[placeholder="Enter your name"] {
+.blocks input {
+    color: #262626;
+}
+.blocks input::placeholder {
     color: rgb(202, 206, 210);
 }
-.blocks input[placeholder="Password"] {
+.blocks input::placeholder {
     color: rgb(202, 206, 210);
 }
 .blocks input[type="text"] {
