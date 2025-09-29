@@ -8,7 +8,7 @@ buttonSignIn.addEventListener("click", () => {
             const response = await fetch("http://127.0.0.1:8000/authorization", {
                 method: "POST", 
                 headers: {
-                    "Content-type": "applicatoin/json"
+                    "Content-type": "application/json"
                 }, 
                 body: JSON.stringify({
                     'userName': userName,
