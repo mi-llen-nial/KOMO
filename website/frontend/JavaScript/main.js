@@ -1,8 +1,8 @@
 const buttonSignIn = document.getElementById("buttonSignIn");
 
 buttonSignIn.addEventListener("click", () => {
-    const userName = document.getElementById("user_name");
-    const userPassword = document.getElementById("user_password")
+    const userName = document.getElementById("user_name").value;
+    const userPassword = document.getElementById("user_password").value;
     try {
         async function userData() {
             const response = await fetch("http://127.0.0.1:8000/authorization", {
@@ -17,7 +17,7 @@ buttonSignIn.addEventListener("click", () => {
             });
             const data = await response.json();
             console.log("Users", data);
-            catch(error) {
+            .catch(error) {
                 console.log("Error", error);
             }
         }
