@@ -107,7 +107,7 @@ main{
     font-size: .8rem;
     font-weight: 200;
 }
-button {
+.buttonSignIn {
     margin-top: 6vh;
     padding-top: 2vh;
     padding-bottom: 2vh;
@@ -121,7 +121,22 @@ button {
     transition: 0.3s;
     width: 28vw;
 }
-button:hover {
+.buttonSignIn:hover {
     color: #fff;
     background-color: #4d5870;
+}
+.buttonIdontHaveAnAccount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: #262626;
+    padding-top: 2vh;
+    font-size: .8rem;
+    text-decoration: none;
+    color: #fff;
+    transition: .3s;
+}
+.buttonIdontHaveAnAccount:hover {
+    color: #67a1fe;
 }
