@@ -1,42 +1,76 @@
-from fastapi import FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
-import sqlite3
+from fastapi import FastAPI #импорт класса
+from pathlib import Path #для путей
+from pydantic import BaseModel #импорт для создания схемы данных
+import sqlite3 #импорт SQLite
 
-app = FastAPI()
+BASE_DIR = Path(__file__).resolve().parent.parent #путь до папки backend
+DB_PATH = BASE_DIR / "database" / "app.db" #путь до папки с бд
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"]
-)
-
-def init_db():
-    conn = sqlite3.connect("app.db")
-    cursor = conn.cursor()
-    cursor.execute("""
-    CREATE TABLE IF NOT EXISTS users (
+def init_db(): #создание функции для базы данных
+    conn = sqlite3.connect(DB_PATH) #подключение к базе данных через путь DB_PATH
+    cursor = conn.cursor() #создали курсор (метод соединения который создаёт объект курсор, для дальнейшего выполнения SQL-запросов)
+    cursor.execute
+    ("""CREATE TABLE IF NOT EXISTS users(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        username TEXT,
-        password TEXT
-    )
-    """)
-    conn.commit()
-    conn.close()
+        name TEXT,
+        email TEXT,
+        password TEXT)""") #создаём таблицу users (если её ещё нет)
+    conn.commit() #сохраняем изменения в базе
+    conn.close() #закрываем соединение с базой
+    init_db() #вызываем эту функцию
 
-init_db()
+app = FastAPI() #создаем переменную с классом FastAPI
 
-@app.post("/authorization")
-async def authorization(request: Request):
-    data = await request.json()
-    username = data.get("userName")
-    password = data.get("userPassword")
+class SignUP(BaseModel): #создаем класс SignUP на проверки данных (на основе BAaseModel)
+    userNameUp: str 
+    userEmailUp: str
+    userPasswordUp: str #схема данных и их типы
 
-    conn = sqlite3.connect("app.db")
+@app.post("/sign_up") #
+def sign_up(userup: SignUP):
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, password))
+
+    cursor.execute("SELECT id FROM users WHERE email = ?", (userup.userEmailUp,))
+    if cursor.fetchone():
+        conn.close()
+        return {"ok": False, "detail": "Email already exists"}
+    
+    cursor.execute(
+        "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
+        (userup.userNameUp, userup.userEmailUp, userup.userPasswordUp)
+    )
     conn.commit()
     conn.close()
+    return {"name": userup.userNameUp}
 
-    return {"message": "User saved", "username": username}
+class SignIn(BaseModel):
+    userNameIn: str
+    userPasswordIn: str
+
+@app.post("/sign_in")
+def sign_in(payload: SignIn):
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, name, password FROM users WHERE name = ?", (payload.userNameIn,))
+    row = cursor.fetchone()
+    conn.close()
+
+    if not row:
+        return {"ok": False, "detail": "User not found"}
+
+    user_id, name, stored_password = row
+    if stored_password != payload.userPasswordIn:
+        return {"ok": False, "detail": "Wrong password"}
+
+    return {"ok": True, "id": user_id, "name": name}
+
+
+
+
+
+
+
+
+
+
