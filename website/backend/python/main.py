@@ -71,6 +71,3 @@ def sign_in(userin: SignIn): #создаем функцию sign_in
 
 
 
-
-
-
