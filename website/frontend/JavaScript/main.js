@@ -18,11 +18,11 @@ buttonSignIn.addEventListener("click", () => {
             });
             const data = await response.json();
             console.log("Users", data);
-        } 
+        }
         catch(error) {
             console.log("Error", error);
-        }
-    }
+        };
+    };
     userDataIn();
 });
 
@@ -49,10 +49,10 @@ buttonSignUp.addEventListener("click", () => {
             });
             const data = await response.json();
             console.log("Users", data);
-        } 
+        }
         catch(error) {
             console.log("Error", error);
-        }
-    }
+        };
+    };
     userDataUp();
 });
