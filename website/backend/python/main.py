@@ -63,7 +63,7 @@ def sign_in(userin: SignIn): #создаем функцию sign_in
     if stored_password != userin.userPasswordIn: #если пароль не соответвствует выдавать следующий текст:
         return {"ok": False, "detail": "Wrong password"}
 
-    return {"ok": True, "id": user_id, "name": name} #если соответствует выдавать
+    return {"ok": True, "id": user_id, "name": name} #deли соответствует выдавать
 
 
 
