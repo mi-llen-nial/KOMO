@@ -6,7 +6,7 @@ buttonSignIn.addEventListener("click", () => {
 
     async function userDataIn() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/authorization", {
+            const response = await fetch("http://127.0.0.1:8000/sign_in", {
                 method: "POST", 
                 headers: {
                     "Content-type": "application/json"
@@ -36,7 +36,7 @@ buttonSignUp.addEventListener("click", () => {
 
     async function userDataUp() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/authorization", {
+            const response = await fetch("http://127.0.0.1:8000/sign_up", {
                 method: "POST", 
                 headers: {
                     "Content-type": "application/json"
