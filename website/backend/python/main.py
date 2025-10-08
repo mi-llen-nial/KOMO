@@ -8,7 +8,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent #путь до папки back
 DB_PATH = BASE_DIR / "database" / "app.db" #путь до папки с бд
 print("👉 База данных создаётся здесь:", DB_PATH)
 DB_PATH.parent.mkdir(parents=True, exist_ok=True) #создаем папку database
-
 def init_db(): #создание функции для базы данных
     print("Создаю таблицу users...")
     conn = sqlite3.connect(DB_PATH) #подключение к базе данных через путь DB_PATH
