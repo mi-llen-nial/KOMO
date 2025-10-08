@@ -2,6 +2,7 @@ from fastapi import FastAPI #импорт класса
 from pathlib import Path #для путей
 from pydantic import BaseModel #импорт для создания схемы данных
 import sqlite3 #импорт SQLite
+from fastapi.middleware.cors import CORSMiddleware
 
 BASE_DIR = Path(__file__).resolve().parent.parent #путь до папки backend
 DB_PATH = BASE_DIR / "database" / "app.db" #путь до папки с бд
@@ -20,6 +21,14 @@ def init_db(): #создание функции для базы данных
     init_db() #вызываем эту функцию
 
 app = FastAPI() #создаем объект с классом FastAPI
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://127.0.0.1:8000"],        # "*" — разрешить всем, потом можно указать конкретный сайт
+    allow_credentials=True,
+    allow_methods=["*"],        # разрешаем все методы (POST, GET, OPTIONS)
+    allow_headers=["*"],        # разрешаем все заголовки
+)
 
 class SignUP(BaseModel): #создаем класс SignUP на проверки данных (на основе BAaseModel)
     userNameUp: str 
