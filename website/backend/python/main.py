@@ -30,7 +30,7 @@ app = FastAPI() #создаем объект с классом FastAPI
 
 FRONTEND_DIR = Path(__file__).resolve().parent.parent.parent / "frontend"
 
-app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="frontend")
+app.mount("/frontend", StaticFiles(directory=FRONTEND_DIR), name="frontend")
 
 @app.get("/", response_class=FileResponse)
 def serve_root():
