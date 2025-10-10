@@ -1,4 +1,5 @@
 const formUp = document.getElementById("signUpForm");
+const remeber = document.getElementById("remember");
 
 formUp.addEventListener("submit", async(event) => {
     event.preventDefault();
@@ -28,12 +29,28 @@ formUp.addEventListener("submit", async(event) => {
         else{
             alert(data.detail || "Error Sign Up");
         }
+
     }  
     catch(error) {
         console.log("Error catch: ", error);
         alert("is not connected");
     } 
 });
+
+window.addEventListener("load", function(){
+    const userSave = localStorage.getItem("userNameUp");
+    if(userSave){
+        userNameUp.value = userSave;
+        remeber.checked = true;
+    }
+})
+
+if(remeber.checked){
+    localStorage.setItem(userNameUp, "userNameUp");
+}
+else{
+    localStorage.removeItem("userNameUp");
+}
 
 
 
