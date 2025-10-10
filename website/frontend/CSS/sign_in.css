@@ -141,20 +141,20 @@ main{
     color: #67a1fe;
 }
 .remember_me {
-  display: flex;
-  align-items: center;
-  gap: .8vw; 
-  font-family: "Inter", sans-serif;
-  color: #ccc;
-  margin-top: 10px;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: .8vw; 
+    font-family: "Inter", sans-serif;
+    color: #ccc;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .remember_me input[type="checkbox"] {
-  width: 1rem;
-  height: 1rem;
-  accent-color: #ffffff; 
-  cursor: pointer;
+    width: 1rem;
+    height: 1rem;
+    accent-color: #ffffff; 
+    cursor: pointer;
 }
 
 .remember_me span{
@@ -163,6 +163,6 @@ main{
 }
 
 .remember_me:hover span {
-  color: #fff;
-  transition: 0.2s;
+    color: #fff;
+    transition: 0.2s;
 }
