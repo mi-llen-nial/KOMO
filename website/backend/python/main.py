@@ -3,6 +3,8 @@ from pathlib import Path #для путей
 from pydantic import BaseModel #импорт для создания схемы данных
 import sqlite3 #импорт SQLite
 from fastapi.middleware.cors import CORSMiddleware
+# from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 
 BASE_DIR = Path(__file__).resolve().parent.parent #путь до папки backend
 DB_PATH = BASE_DIR / "database" / "app.db" #путь до папки с бд
@@ -25,6 +27,16 @@ def init_db(): #создание функции для базы данных
 init_db() #вызываем эту функцию
 
 app = FastAPI() #создаем объект с классом FastAPI
+
+app.mount("/", StaticFiles(directory="frontend/HTML", html=True), name="html")
+app.mount("/", StaticFiles(directory="frontend/CSS", css=True), name="css")
+app.mount("/", StaticFiles(directory="frontend/JavaScript", js=True), name="js")
+app.mount("/", StaticFiles(directory="frontend/assets", html=True), name="assets")
+
+# @app.get("/", response_class=HTMLResponse)
+# def read_root():
+#     html_path = Path(__file__).resolve().parent.parent.parent / "frontend" / "HTML" / "index.HTML"
+#     return html_path.read_text(encoding="utf-8")
 
 app.add_middleware(
     CORSMiddleware,
