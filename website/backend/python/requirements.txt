@@ -1,7 +1,5 @@
 fastapi
-# uvicorn
+uvicorn
 pydantic
 # python-multipart
 pathlib
-sqlite3
-fastapi.middleware.cors
