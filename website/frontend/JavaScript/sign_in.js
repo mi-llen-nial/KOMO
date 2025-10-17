@@ -7,7 +7,7 @@ formIn.addEventListener("submit", async(event) => {
     const userPasswordIn = document.getElementById("user_password_in").value;
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/sign_in", {
+        const response = await fetch("https://KOMO.up.railway.app/sign_in", {
             method: "POST", 
             headers: {
                 "Content-type": "application/json"

@@ -9,7 +9,7 @@ formUp.addEventListener("submit", async(event) => {
     const userPasswordUp = document.getElementById("user_password_up").value;
 
     try {
-        const response = await fetch("http://127.0.0.1:8000/sign_up", {
+        const response = await fetch("https://KOMO.up.railway.app/sign_up", {
             method: "POST", 
             headers: {
                 "Content-type": "application/JSON"
